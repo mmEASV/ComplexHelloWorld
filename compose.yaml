@@ -1,0 +1,33 @@
+﻿services:
+  complexhelloworld:
+    image: complexhelloworld
+    build:
+      context: .
+      dockerfile: ComplexHelloWorld/Dockerfile
+    ports:
+      - "9530:8080"
+    depends_on:
+      - languageservice
+      - greetingservice
+      - planetservice
+
+  languageservice:
+    build:
+      context: .
+      dockerfile: LanguageService/Dockerfile
+    deploy:
+      replicas: 2
+
+  greetingservice:
+    build:
+      context: .
+      dockerfile: GreetingService/Dockerfile
+    deploy:
+      replicas: 2
+
+  planetservice:
+    build:
+      context: .
+      dockerfile: PlanetService/Dockerfile
+    deploy:
+      replicas: 2

@@ -1,0 +1,78 @@
+# This is a generated file. Not intended for manual editing.
+services:
+  complexhelloworld:
+    build:
+      context: "/Users/mazur/Projects/School/PBSf25/1stSemester/DevelopmentOfLargeSystems/Week5/ComplexHelloWorld"
+      dockerfile: "ComplexHelloWorld/Dockerfile"
+      target: "base"
+    command: []
+    entrypoint:
+    - "dotnet"
+    - "/app/bin/Debug/net8.0/ComplexHelloWorld.dll"
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Development"
+      DOTNET_USE_POLLING_FILE_WATCHER: "true"
+    image: "complexhelloworld:dev"
+    ports: []
+    volumes:
+    - "/Users/mazur/Projects/School/PBSf25/1stSemester/DevelopmentOfLargeSystems/Week5/ComplexHelloWorld/ComplexHelloWorld:/app:rw"
+    - "/Users/mazur/Projects/School/PBSf25/1stSemester/DevelopmentOfLargeSystems/Week5/ComplexHelloWorld:/src:rw"
+    - "/Users/mazur/.nuget/packages:/home/app/.nuget/packages"
+    working_dir: "/app"
+  greetingservice:
+    build:
+      context: "/Users/mazur/Projects/School/PBSf25/1stSemester/DevelopmentOfLargeSystems/Week5/ComplexHelloWorld"
+      dockerfile: "GreetingService/Dockerfile"
+      target: "base"
+    command: []
+    entrypoint:
+    - "dotnet"
+    - "/app/bin/Debug/net8.0/GreetingService.dll"
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Development"
+      DOTNET_USE_POLLING_FILE_WATCHER: "true"
+    image: "greetingservice:dev"
+    ports: []
+    volumes:
+    - "/Users/mazur/Projects/School/PBSf25/1stSemester/DevelopmentOfLargeSystems/Week5/ComplexHelloWorld/GreetingService:/app:rw"
+    - "/Users/mazur/Projects/School/PBSf25/1stSemester/DevelopmentOfLargeSystems/Week5/ComplexHelloWorld:/src:rw"
+    - "/Users/mazur/.nuget/packages:/home/app/.nuget/packages"
+    working_dir: "/app"
+  languageservice:
+    build:
+      context: "/Users/mazur/Projects/School/PBSf25/1stSemester/DevelopmentOfLargeSystems/Week5/ComplexHelloWorld"
+      dockerfile: "LanguageService/Dockerfile"
+      target: "base"
+    command: []
+    entrypoint:
+    - "dotnet"
+    - "/app/bin/Debug/net8.0/LanguageService.dll"
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Development"
+      DOTNET_USE_POLLING_FILE_WATCHER: "true"
+    image: "languageservice:dev"
+    ports: []
+    volumes:
+    - "/Users/mazur/Projects/School/PBSf25/1stSemester/DevelopmentOfLargeSystems/Week5/ComplexHelloWorld/LanguageService:/app:rw"
+    - "/Users/mazur/Projects/School/PBSf25/1stSemester/DevelopmentOfLargeSystems/Week5/ComplexHelloWorld:/src:rw"
+    - "/Users/mazur/.nuget/packages:/home/app/.nuget/packages"
+    working_dir: "/app"
+  planetservice:
+    build:
+      context: "/Users/mazur/Projects/School/PBSf25/1stSemester/DevelopmentOfLargeSystems/Week5/ComplexHelloWorld"
+      dockerfile: "PlanetService/Dockerfile"
+      target: "base"
+    command: []
+    entrypoint:
+    - "dotnet"
+    - "/app/bin/Debug/net8.0/PlanetService.dll"
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Development"
+      DOTNET_USE_POLLING_FILE_WATCHER: "true"
+    image: "planetservice:dev"
+    ports: []
+    volumes:
+    - "/Users/mazur/Projects/School/PBSf25/1stSemester/DevelopmentOfLargeSystems/Week5/ComplexHelloWorld/PlanetService:/app:rw"
+    - "/Users/mazur/Projects/School/PBSf25/1stSemester/DevelopmentOfLargeSystems/Week5/ComplexHelloWorld:/src:rw"
+    - "/Users/mazur/.nuget/packages:/home/app/.nuget/packages"
+    working_dir: "/app"
