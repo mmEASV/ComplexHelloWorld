@@ -33,9 +33,17 @@ jobs:
             # Pull latest code
             git pull
 
-            # Build and restart services using docker-compose
-            # Build and restart services using docker-compose with no cache
+            # Clean docker cache and images
+            docker system prune -f
+          
+            # Remove old containers and volumes
+            docker compose down -v
+          
+            # Build images with no cache
             docker compose build --no-cache --pull
+          
+            # Start services
             docker compose up -d
           ENDSSH
+
 
