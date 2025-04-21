@@ -34,6 +34,8 @@ jobs:
             git pull
 
             # Build and restart services using docker-compose
+            # Build and restart services using docker-compose with no cache
+            docker compose build --no-cache --pull
             docker compose up -d
           ENDSSH
-      
+
