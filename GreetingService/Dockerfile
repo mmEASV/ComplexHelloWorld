@@ -7,17 +7,17 @@ EXPOSE 8081
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["GreetingApi/GreetingApi.csproj", "GreetingApi/"]
-RUN dotnet restore "GreetingApi/GreetingApi.csproj"
+COPY ["GreetingService/GreetingService.csproj", "GreetingService/"]
+RUN dotnet restore "GreetingService/GreetingService.csproj"
 COPY . .
-WORKDIR "/src/GreetingApi"
-RUN dotnet build "GreetingApi.csproj" -c $BUILD_CONFIGURATION -o /app/build
+WORKDIR "/src/GreetingService"
+RUN dotnet build "GreetingService.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
-RUN dotnet publish "GreetingApi.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "GreetingService.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "GreetingApi.dll"]
+ENTRYPOINT ["dotnet", "GreetingService.dll"]
