@@ -34,16 +34,20 @@ jobs:
             git pull
 
             # Update Dockerfiles to match the actual project structure
-            sed -i 's/LanguageApi\/LanguageApi.csproj/LanguageService\/LanguageService.csproj/g' LanguageService/Dockerfile
-            sed -i 's/"\/src\/LanguageApi"/"\/src\/LanguageService"/g' LanguageService/Dockerfile
-            sed -i 's/LanguageApi.dll/LanguageService.dll/g' LanguageService/Dockerfile
 
+            # 1. Update GreetingService Dockerfile
             sed -i 's/GreetingApi\/GreetingApi.csproj/GreetingService\/GreetingService.csproj/g' GreetingService/Dockerfile
-            sed -i 's/"\/src\/GreetingApi"/"\/src\/GreetingService"/g' GreetingService/Dockerfile
+            sed -i 's/\/src\/GreetingApi/\/src\/GreetingService/g' GreetingService/Dockerfile
             sed -i 's/GreetingApi.dll/GreetingService.dll/g' GreetingService/Dockerfile
 
+            # 2. Update LanguageService Dockerfile
+            sed -i 's/LanguageApi\/LanguageApi.csproj/LanguageService\/LanguageService.csproj/g' LanguageService/Dockerfile
+            sed -i 's/\/src\/LanguageApi/\/src\/LanguageService/g' LanguageService/Dockerfile
+            sed -i 's/LanguageApi.dll/LanguageService.dll/g' LanguageService/Dockerfile
+
+            # 3. Update PlanetService Dockerfile
             sed -i 's/PlanetApi\/PlanetApi.csproj/PlanetService\/PlanetService.csproj/g' PlanetService/Dockerfile
-            sed -i 's/"\/src\/PlanetApi"/"\/src\/PlanetService"/g' PlanetService/Dockerfile
+            sed -i 's/\/src\/PlanetApi/\/src\/PlanetService/g' PlanetService/Dockerfile
             sed -i 's/PlanetApi.dll/PlanetService.dll/g' PlanetService/Dockerfile
 
             # Build and restart services using docker-compose
