@@ -21,8 +21,6 @@ jobs:
       - name: Deploy to server
         run: |
           ssh ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} << 'ENDSSH'
-            # Navigate to project directory
-            cd ${{ secrets.PROJECT_DIR }}
             
             # Pull latest code
             git pull
