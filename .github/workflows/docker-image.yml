@@ -21,6 +21,14 @@ jobs:
       - name: Deploy to server
         run: |
           ssh ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} << 'ENDSSH'
+            # Check if ComplexHelloWorld directory exists, if not clone it
+            if [ ! -d ~/ComplexHelloWorld ]; then
+              echo "Directory not found. Cloning repository..."
+              git clone ${{ github.server_url }}/${{ github.repository }}.git ~/ComplexHelloWorld
+            fi
+            
+            # Navigate to project directory
+            cd ~/ComplexHelloWorld
             
             # Pull latest code
             git pull
