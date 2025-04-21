@@ -32,19 +32,6 @@ jobs:
 
             # Pull latest code
             git pull
-
-            # Build images with no cache
-            docker compose build --no-cache --pull
-          
-            # Build services sequentially
-            echo "Building GreetingService..."
-            docker compose build --no-cache greetingservice
-          
-            echo "Building LanguageService..."
-            docker compose build --no-cache languageservice
-          
-            echo "Building PlanetService..."
-            docker compose build --no-cache planetservice
           
             # Start all services
             docker compose up -d
